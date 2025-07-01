@@ -1,5 +1,7 @@
 import urllib.request
 from classes.PencilSketch import PencilSketch
+from classes.Cartoon import Cartoon
+
 import cv2
 
 urllib.request.urlretrieve(
@@ -8,11 +10,14 @@ urllib.request.urlretrieve(
 )
 
 img = cv2.imread('dog.jpg')
-bg = cv2.imread('grama.jpg')
 
-sketch = PencilSketch(resolution=(800, 965),bg_gray = "grama.jpg")
-output = sketch.render(img)
+# sketch = PencilSketch(resolution=(800, 965),bg_gray = "grama.jpg")
+# output = sketch.render(img)
 
-cv2.imshow("Pencil Sketch", output)
+cartoon = Cartoon('dog.jpg')
+
+output_cartoon = cartoon.render()
+
+cv2.imshow("Pencil Sketch", output_cartoon)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
